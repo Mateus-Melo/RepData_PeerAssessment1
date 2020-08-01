@@ -73,7 +73,7 @@ We are able to see that the frequency of the short amount of steps has fallen an
 ## Are there differences in activity patterns between weekdays and weekends?
 
 The code below generates as panel plot that enables us see the difference of activity of the weekdays and weekends.
-```{r }
+```{r warning = FALSE, message = FALSE}
 dfWithoutNa$typeDay <- factor(isWeekday(dfWithoutNa$date), levels = c(T, F), labels = c("Weekday","Weekend"))
 averagedStepsWithoutNa <- dfWithoutNa %>% group_by(interval, typeDay) %>% summarise(average = mean(steps,na.rm=T))
 ggplot(data=averagedStepsWithoutNa, aes(interval, average)) + geom_line() + facet_wrap(.~typeDay,nrow=2)

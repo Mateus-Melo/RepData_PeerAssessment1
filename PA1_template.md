@@ -102,13 +102,6 @@ The code below generates as panel plot that enables us see the difference of act
 ```r
 dfWithoutNa$typeDay <- factor(isWeekday(dfWithoutNa$date), levels = c(T, F), labels = c("Weekday","Weekend"))
 averagedStepsWithoutNa <- dfWithoutNa %>% group_by(interval, typeDay) %>% summarise(average = mean(steps,na.rm=T))
-```
-
-```
-## `summarise()` regrouping output by 'interval' (override with `.groups` argument)
-```
-
-```r
 ggplot(data=averagedStepsWithoutNa, aes(interval, average)) + geom_line() + facet_wrap(.~typeDay,nrow=2)
 ```
 
